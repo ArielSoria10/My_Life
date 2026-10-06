@@ -1,196 +1,466 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Portafolio personal de mi vida by Ariel."
+      content="Portafolio profesional de Ariel - Estudiante de Ingeniería en Computación de la Escuela Politécnica Nacional (EPN)."
     />
-    <title>Ariel | Portafolio</title>
+    <title>Ariel | Portafolio Profesional</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#f0f7ff',
+                100: '#e0effe',
+                500: '#0284c7',
+                600: '#0284c7',
+                700: '#0369a1',
+                800: '#075985',
+                900: '#0c4a6e',
+                950: '#082f49',
+              },
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+    <!-- Google Fonts Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .glass-card {
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    </style>
   </head>
-  <body>
-    <header class="site-header">
-      <nav class="container nav">
-        <a class="brand" href="#inicio">Ariel</a>
-        <div class="nav-links">
-          <a href="#sobre-mi">Sobre mí</a>
-          <a href="#hobbies">Hobbies</a>
-          <a href="#metas">Metas</a>
-          <a href="#gustos">Gustos</a>
+  <body class="bg-slate-950 text-slate-100 antialiased selection:bg-sky-500 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80">
+      <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between" aria-label="Navegación principal">
+        <a href="#inicio" class="text-xl font-bold tracking-tight text-white hover:text-sky-400 transition-colors flex items-center gap-2">
+          <span class="bg-sky-500 text-slate-950 w-8 h-8 rounded-lg flex items-center justify-center font-extrabold text-lg">A</span>
+          <span>Ariel<span class="text-sky-400">.dev</span></span>
+        </a>
+        <div class="hidden md:flex items-center space-x-8 font-medium text-sm text-slate-300">
+          <a href="#sobre-mi" class="hover:text-sky-400 transition-colors">Sobre mí</a>
+          <a href="#habilidades" class="hover:text-sky-400 transition-colors">Habilidades</a>
+          <a href="#proyectos" class="hover:text-sky-400 transition-colors">Proyectos</a>
+          <a href="#intereses" class="hover:text-sky-400 transition-colors">Intereses</a>
+          <a href="#contacto" class="bg-sky-600 hover:bg-sky-500 text-white px-4 py-2 rounded-lg transition-all duration-200 font-semibold shadow-lg shadow-sky-600/20">Contacto</a>
         </div>
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none" aria-label="Abrir menú">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
       </nav>
+      <!-- Mobile Menu Dropdown -->
+      <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-4 space-y-2 text-slate-300">
+        <a href="#sobre-mi" class="block px-3 py-2 rounded-md hover:bg-slate-800 hover:text-white">Sobre mí</a>
+        <a href="#habilidades" class="block px-3 py-2 rounded-md hover:bg-slate-800 hover:text-white">Habilidades</a>
+        <a href="#proyectos" class="block px-3 py-2 rounded-md hover:bg-slate-800 hover:text-white">Proyectos</a>
+        <a href="#intereses" class="block px-3 py-2 rounded-md hover:bg-slate-800 hover:text-white">Intereses</a>
+        <a href="#contacto" class="block px-3 py-2 rounded-md bg-sky-600 text-white font-medium text-center">Contacto</a>
+      </div>
     </header>
 
-    <main>
-      <section id="inicio" class="hero">
-        <div class="container hero-content">
-          <div class="hero-copy">
-            <p class="eyebrow">Hola, soy Ariel</p>
-            <h1>Soy estudiante de la EPN de Ingeniería en Computación.</h1>
-            <p class="lead">
-                Me gusta aprender cosas nuevas, me gusta la programación y el
-                diseño web, me gusta crear cosas que sean útiles y que ayuden a
-                las personas.
-            </p>
-            <div class="actions">
-              <a class="btn btn-primary" href="#metas">Ver metas</a>
-              <a class="btn btn-secondary" href="#gustos">Ver gustos</a>
-            </div>
-            <ul class="mini-stats" aria-label="estadísticas">
-              <li><strong>20</strong><span>Años</span></li>
-              <li><strong>4to</strong><span>Semestre</span></li>
-              <li><strong>100%</strong><span>Enfocado</span></li>
-            </ul>
-          </div>
+    <main class="flex-grow">
+      <section id="inicio" class="relative py-20 lg:py-32 overflow-hidden border-b border-slate-800/50">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-sky-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium">
+                <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                Estudiante de Ingeniería en Computación @ EPN
+              </div>
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                Transformando ideas en <span class="gradient-text">soluciones digitales</span>
+              </h1>
+              <p class="text-lg text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                Apasionado por el desarrollo de software, la creación de interfaces web modernas y el aprendizaje continuo de nuevas tecnologías. Enfocado en construir software funcional, escalable y accesible.
+              </p>
+              
+              <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                <a href="#proyectos" class="bg-sky-600 hover:bg-sky-500 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 shadow-lg shadow-sky-600/25 hover:shadow-sky-600/40 transform hover:-translate-y-0.5">
+                  Ver Proyectos
+                </a>
+                <a href="#contacto" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-6 py-3 rounded-xl font-semibold transition-all duration-200">
+                  Contactar
+                </a>
+              </div>
 
-          <div class="hero-card" aria-label="Perfil personal">
-            <div class="avatar">A</div>
-            <div class="card-body">
-              <h2>Ariel</h2>
-              <p>Desarrollador / Diseñador web / Creator digital</p>
+              <!-- Stats Metrics -->
+              <div class="pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
+                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-center lg:text-left">
+                  <div class="text-2xl font-bold text-white">4to</div>
+                  <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Semestre EPN</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-center lg:text-left">
+                  <div class="text-2xl font-bold text-sky-400">100%</div>
+                  <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Enfocado</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-center lg:text-left">
+                  <div class="text-2xl font-bold text-indigo-400">C++ / JS</div>
+                  <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Core Stack</div>
+                </div>
+              </div>
             </div>
-            <div class="card-tags">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
+
+            <!-- Profile Interactive Card -->
+            <div class="lg:col-span-5 flex justify-center">
+              <div class="w-full max-w-sm glass-card rounded-2xl p-6 shadow-2xl relative group border border-slate-700/60 transition-transform duration-300 hover:scale-[1.02]">
+                <div class="flex flex-col items-center text-center">
+                  <div class="w-24 h-24 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-4xl font-black text-white shadow-xl shadow-sky-500/20 mb-4 ring-4 ring-slate-900">
+                    A
+                  </div>
+                  <h2 class="text-xl font-bold text-white">Ariel</h2>
+                  <p class="text-sm text-sky-400 font-medium mb-3">Futuro Ingeniero en Computación</p>
+                  <p class="text-xs text-slate-400 mb-6 leading-relaxed">
+                    Escuela Politécnica Nacional (Quito, Ecuador). Enfocado en algoritmos, estructuras de datos y desarrollo web actual.
+                  </p>
+                  
+                  <div class="w-full space-y-2">
+                    <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 text-left mb-1">Tecnologías Principales</div>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                      <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-xs font-medium text-sky-300">JavaScript</span>
+                      <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-xs font-medium text-indigo-300">C++</span>
+                      <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-xs font-medium text-emerald-300">HTML5 / CSS3</span>
+                      <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-xs font-medium text-amber-300">Git & GitHub</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      <section id="hobbies" class="section">
-        <div class="container two-columns">
-          <div>
-            <p class="section-tag">Hobbies</p>
-            <h2>Lo que me gusta hacer</h2>
+      <section id="sobre-mi" class="py-20 border-b border-slate-800/50 bg-slate-900/30">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mx-auto text-center mb-12">
+            <h2 class="text-xs font-bold text-sky-400 uppercase tracking-widest mb-2">Sobre Mí</h2>
+            <p class="text-3xl font-extrabold text-white">Pasión por la ciencia de la computación</p>
           </div>
-          <div>
-            <p>
-              Me apasiona aprender cosas nuevas, especialmente en el ámbito 
-              de la tecnología y el diseño. Me gusta explorar diferentes áreas de
-              la programación y el desarrollo web, así como experimentar con nuevas 
-              herramientas y técnicas.
-            </p>
-            <p>
-              Me gusta el fútbol, es un deporte que me agrada demasiado. Mi jugador favorito 
-              es Lionel Messi, y disfruto viendo partidos y siguiendo las ligas de fútbol.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="metas" class="section alt">
-        <div class="container">
-          <p class="section-tag">Metas</p>
-          <h2>Lo que quiero lograr</h2>
-          <div class="card-grid">
-            <article class="info-card">
-              <span class="icon">01</span>
-              <h3>Reto 1</h3>
-              <p>
-                Páginas web simples y efectivas para promocionar productos,
-                servicios o eventos, con un diseño atractivo y un mensaje claro.
-              </p>
-            </article>
-            <article class="info-card">
-              <span class="icon">02</span>
-              <h3>Reto 2</h3>
-              <p>
-                Crear aplicaciones web interactivas y dinámicas, con funcionalidades avanzadas
-                y una experiencia de usuario fluida, utilizando tecnologías modernas.
-              </p>
-            </article>
-            <article class="info-card">
-              <span class="icon">03</span>
-              <h3>Reto 3</h3>
-              <p>
-                Crear blogs o páginas de contenido para compartir ideas, historias y
-                conocimientos, con un diseño atractivo y una experiencia de
-                usuario agradable.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="gustos" class="section">
-        <div class="container">
-          <p class="section-tag">Gustos</p>
-          <h2>Lo que me gusta</h2>
-          <div class="project-grid">
-            <article class="project-card">
-              <img
-                class="project-image"
-                src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=900&q=80"
-                alt="Boxeo en ring"
-              />
-              <div class="project-content">
-                <h3>Boxeo</h3>
-                <p>
-                  Me gusta el boxeo, es un deporte que me agrada demasiado. Mi boxeador favorito
-                  es Floyd Mayweather, y disfruto viendo combates y siguiendo las ligas de boxeo.
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+              <div>
+                <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center font-bold text-lg mb-4">01</div>
+                <h3 class="text-xl font-bold text-white mb-3">Formación Académica</h3>
+                <p class="text-slate-400 leading-relaxed text-sm sm:text-base">
+                  Actualmente me encuentro cursando el cuarto semestre de Ingeniería en Computación en la Escuela Politécnica Nacional (EPN), una de las instituciones académicas más prestigiosas de Ecuador. Mi enfoque está orientado hacia la ingeniería de software, arquitectura de sistemas y diseño accesible.
                 </p>
               </div>
-            </article>
-            <article class="project-card">
-              <img
-                class="project-image"
-                src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=900&q=80"
-                alt="Pelota de fútbol y campo"
-              />
-              <div class="project-content">
-                <h3>Fútbol</h3>
-                <p>
-                  El fútbol es un deporte que me gusta demasiado, y me gusta ver partidos y seguir las ligas de fútbol.
+            </div>
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+              <div>
+                <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-lg mb-4">02</div>
+                <h3 class="text-xl font-bold text-white mb-3">Metodología & Filosofía</h3>
+                <p class="text-slate-400 leading-relaxed text-sm sm:text-base">
+                  Creo firmemente en que el código de calidad debe ser limpio, mantenible y enfocado en resolver necesidades reales de las personas. Combino la rigurosidad lógica de la ingeniería con la creatividad del diseño web para entregar productos funcionales.
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="habilidades" class="py-20 border-b border-slate-800/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mx-auto text-center mb-16">
+            <h2 class="text-xs font-bold text-sky-400 uppercase tracking-widest mb-2">Stack Tecnológico</h2>
+            <p class="text-3xl font-extrabold text-white">Habilidades & Herramientas</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Web Dev -->
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-colors">
+              <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center mb-6">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-4">Desarrollo Web</h3>
+              <ul class="space-y-3 text-sm text-slate-300">
+                <li class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>HTML5 Semántico</span><span class="text-xs text-slate-500">Avanzado</span></li>
+                <li class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>CSS3 / Tailwind CSS</span><span class="text-xs text-slate-500">Intermedio</span></li>
+                <li class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>JavaScript (ES6+)</span><span class="text-xs text-slate-500">Intermedio</span></li>
+                <li class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>Responsive Design</span><span class="text-xs text-slate-500">Avanzado</span></li>
+              </ul>
+            </div>
+
+            <!-- Logic & Languages -->
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-colors">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-6">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 002-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-4">Lógica & Programación</h3>
+              <ul class="space-y-3 text-sm text-slate-300">
+                <li class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>C / C++</span><span class="text-xs text-slate-500">Académico/EPN</span></li>
+                <li class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Estructuras de Datos</span><span class="text-xs text-slate-500">Fundamentos</span></li>
+                <li class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Programación Orientada a Objetos</span><span class="text-xs text-slate-500">POO</span></li>
+                <li class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Algoritmos Básicos</span><span class="text-xs text-slate-500">Análisis</span></li>
+              </ul>
+            </div>
+
+            <!-- Tools & Workflow -->
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-colors">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-6">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2 2 2 0 01-2-2V4zM4 7a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V7z"></path></svg>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-4">Herramientas & Entorno</h3>
+              <ul class="space-y-3 text-sm text-slate-300">
+                <li class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Git & GitHub</span><span class="text-xs text-slate-500">Control de Versiones</span></li>
+                <li class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>VS Code</span><span class="text-xs text-slate-500">Editor Principal</span></li>
+                <li class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Linux / Terminal</span><span class="text-xs text-slate-500">Comandos Básicos</span></li>
+                <li class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Figma / Layouts</span><span class="text-xs text-slate-500">Prototipado</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="proyectos" class="py-20 border-b border-slate-800/50 bg-slate-900/30">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mx-auto text-center mb-16">
+            <h2 class="text-xs font-bold text-sky-400 uppercase tracking-widest mb-2">Portafolio Práctico</h2>
+            <p class="text-3xl font-extrabold text-white">Proyectos & Retos de Software</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Project Card 1 -->
+            <article class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col group">
+              <div class="p-6 flex-grow flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">Landing Page</span>
+                    <span class="text-xs text-slate-500">01</span>
+                  </div>
+                  <h3 class="text-xl font-bold text-white mb-2 group-hover:text-sky-400 transition-colors">Sitios Web Promocionales</h3>
+                  <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                    Diseño y desarrollo de páginas de aterrizaje altamente optimizadas, con maquetación moderna, SEO básico y un enfoque en conversión e interactividad.
+                  </p>
+                </div>
+                <div class="flex items-center gap-2 pt-4 border-t border-slate-800/80">
+                  <span class="text-xs font-medium text-slate-400 bg-slate-800 px-2 py-1 rounded">HTML</span>
+                  <span class="text-xs font-medium text-slate-400 bg-slate-800 px-2 py-1 rounded">Tailwind CSS</span>
+                  <span class="text-xs font-medium text-slate-400 bg-slate-800 px-2 py-1 rounded">JS</span>
+                </div>
+              </div>
             </article>
-            <article class="project-card">
-              <img
-                class="project-image"
-                src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80"
-                alt="Persona escuchando música"
-              />
-              <div class="project-content">
-                <h3>Música</h3>
-                <p>
-                  Me gusta escuchar música, especialmente rock y pop, y me gusta descubrir nuevas bandas y artistas.
-                </p>
+
+            <!-- Project Card 2 -->
+            <article class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col group">
+              <div class="p-6 flex-grow flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Aplicación Web</span>
+                    <span class="text-xs text-slate-500">02</span>
+                  </div>
+                  <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">Web Apps Interactivas</h3>
+                  <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                    Aplicaciones cliente dinámicas que integran gestión de estado local, manipulación activa del DOM e interacción fluida con el usuario.
+                  </p>
+                </div>
+                <div class="flex items-center gap-2 pt-4 border-t border-slate-800/80">
+                  <span class="text-xs font-medium text-slate-400 bg-slate-800 px-2 py-1 rounded">JavaScript ES6</span>
+                  <span class="text-xs font-medium text-slate-400 bg-slate-800 px-2 py-1 rounded">DOM API</span>
+                  <span class="text-xs font-medium text-slate-400 bg-slate-800 px-2 py-1 rounded">CSS Flexbox</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project Card 3 -->
+            <article class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col group">
+              <div class="p-6 flex-grow flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Plataforma</span>
+                    <span class="text-xs text-slate-500">03</span>
+                  </div>
+                  <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Sistemas de Contenido</h3>
+                  <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                    Blogs y portales estructurados para divulgación técnica y académica con navegación rápida y experiencia de lectura optimizada.
+                  </p>
+                </div>
+                <div class="flex items-center gap-2 pt-4 border-t border-slate-800/80">
+                  <span class="text-xs font-medium text-slate-400 bg-slate-800 px-2 py-1 rounded">UI/UX</span>
+                  <span class="text-xs font-medium text-slate-400 bg-slate-800 px-2 py-1 rounded">Markdown</span>
+                  <span class="text-xs font-medium text-slate-400 bg-slate-800 px-2 py-1 rounded">GitHub Pages</span>
+                </div>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="contacto" class="section contact">
-        <div class="container contact-box">
-          <div>
-            <p class="section-tag">Contacto</p>
-            <h2>Si lo puedes soñar lo puedes crear.</h2>
+      <section id="intereses" class="py-20 border-b border-slate-800/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mx-auto text-center mb-16">
+            <h2 class="text-xs font-bold text-sky-400 uppercase tracking-widest mb-2">Fuera del código</h2>
+            <p class="text-3xl font-extrabold text-white">Intereses & Aficiones</p>
           </div>
-          <div class="contact-actions">
-            <a class="btn btn-primary" href="mailto:tuemail@example.com">AllWeNeedIsLove.com</a>
-            <a class="btn btn-secondary" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-slate-900/40 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-colors p-6">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-4">
+                ⚽
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Fútbol</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Apasionado por el análisis de juego y el deporte. Admiro la disciplina de deportistas de élite como Lionel Messi.
+              </p>
+            </div>
+
+            <div class="bg-slate-900/40 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-colors p-6">
+              <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-2xl mb-4">
+                🥊
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Boxeo</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                El boxeo enseña estrategia, resiliencia y enfoque bajo presión, cualidades esenciales para resolver problemas complejos.
+              </p>
+            </div>
+
+            <div class="bg-slate-900/40 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-colors p-6">
+              <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-2xl mb-4">
+                🎧
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Música</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Entusiasta del Rock y Pop. La música es mi acompañante constante durante las sesiones intensas de programación y estudio.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950/40 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              
+              <div class="lg:col-span-5 space-y-6">
+                <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Contacto Directo</span>
+                <h2 class="text-3xl font-extrabold text-white leading-tight">
+                  "Si lo puedes soñar, lo puedes programar."
+                </h2>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                  ¿Tienes algún proyecto en mente o buscas colaborar en una iniciativa tecnológica? Envíame un mensaje y pongámonos en contacto.
+                </p>
+
+                <div class="space-y-4 pt-4">
+                  <a href="mailto:ariel.soria@epn.edu.ec" class="flex items-center gap-3 text-slate-300 hover:text-sky-400 transition-colors text-sm font-medium">
+                    <span class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-sky-400">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </span>
+                    ariel.soria@epn.edu.ec
+                  </a>
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-slate-300 hover:text-sky-400 transition-colors text-sm font-medium">
+                    <span class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-sky-400">
+                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    </span>
+                    GitHub Profile
+                  </a>
+                </div>
+              </div>
+
+              <!-- Interactive Contact Form Simulation -->
+              <div class="lg:col-span-7 bg-slate-950/60 p-6 sm:p-8 rounded-2xl border border-slate-800">
+                <form id="contact-form" class="space-y-4">
+                  <div>
+                    <label for="name" class="block text-xs font-semibold text-slate-300 uppercase mb-1">Nombre</label>
+                    <input type="text" id="name" required placeholder="Tu nombre" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors" />
+                  </div>
+                  <div>
+                    <label for="email" class="block text-xs font-semibold text-slate-300 uppercase mb-1">Correo Electrónico</label>
+                    <input type="email" id="email" required placeholder="tu@email.com" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors" />
+                  </div>
+                  <div>
+                    <label for="message" class="block text-xs font-semibold text-slate-300 uppercase mb-1">Mensaje</label>
+                    <textarea id="message" rows="4" required placeholder="¿En qué puedo ayudarte?" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 transition-colors resize-none"></textarea>
+                  </div>
+                  <button type="submit" class="w-full bg-sky-600 hover:bg-sky-500 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg shadow-sky-600/20 text-sm">
+                    Enviar Mensaje
+                  </button>
+                  <div id="form-response" class="hidden p-3 rounded-lg text-xs font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 text-center">
+                    ¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.
+                  </div>
+                </form>
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-content">
-        <p>© <span id="year"></span> Ariel</p>
-        <p>Hecho con HTML, CSS y JavaScript</p>
+    <footer class="border-t border-slate-800/80 bg-slate-950 py-8">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>© <span id="year"></span> Ariel — Ingeniería en Computación EPN</p>
+        <p class="flex items-center gap-1">
+          Construido con HTML5, Tailwind CSS & JavaScript
+        </p>
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+      // Dynamic Year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Mobile Menu Toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Close mobile menu on click link
+      document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+
+      // Interactive Form Feedback Simulation
+      const contactForm = document.getElementById('contact-form');
+      const formResponse = document.getElementById('form-response');
+
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        formResponse.classList.remove('hidden');
+        contactForm.reset();
+        setTimeout(() => {
+          formResponse.classList.add('hidden');
+        }, 5000);
+      });
+    </script>
   </body>
 </html>
